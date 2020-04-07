@@ -1,0 +1,43 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+  "parameters": {
+    "name": {
+      "value": "cm-dip-AKV01-dev"
+    },
+    "location": {
+      "value": "australiaeast"
+    },
+    "sku": {
+      "value": "standard"
+    },
+    "tenant": {
+      "value": "7ea1d07e-a686-4e5f-a403-bc7031233629"
+    },
+    "objectId": {
+      "value": "dee54827-86a0-4336-9433-1f648b2c6b67"
+    },
+    "enabledForDeployment": {
+      "value": true
+    },
+    "enabledForTemplateDeployment": {
+      "value": true
+    },
+    "enabledForDiskEncryption": {
+      "value": true
+    },
+    "env": {
+      "value": "dev"
+    } ,
+    "clientPrefix": {
+      "value": "cm"
+    } ,
+    "resourceType": {     
+      "value": "-kv-"
+    },
+    "project": {     
+      "value": "-dip-"
+    }      
+
+  }
+}

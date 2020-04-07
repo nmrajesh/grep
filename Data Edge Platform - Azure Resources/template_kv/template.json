@@ -1,0 +1,128 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "name": {
+      "defaultValue": "cm-dip-AKV01-dev",
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "sku": {
+      "type": "string",
+      "defaultValue": "Standard",
+      "allowedValues": [
+        "Standard",
+        "standard",
+        "Premium",
+        "premium"
+      ],
+      "metadata": {
+        "description": "SKU for the vault"
+      }
+    },
+    "tenant": {
+      "type": "string"
+    },
+    "objectId": {
+      "type": "string"
+    },
+    "enabledForDeployment": {
+      "type": "bool"
+    },
+    "enabledForTemplateDeployment": {
+      "type": "bool"
+    },
+    "enabledForDiskEncryption": {
+      "type": "bool"
+    },
+    "env": {
+      "type": "string",
+      "defaultValue": "dev"
+    },
+    "clientPrefix": {
+      "type": "string",
+      "defaultValue": "cm"
+    },
+    "resourceType": {
+      "type": "string",
+      "defaultValue": "-kv-"
+    },
+    "project": {
+      "type": "string",
+      "defaultValue": "-dip-"
+    }
+  },
+  "variables": {
+    "tags": {
+      "Solution": "Data and Insights Programme"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.KeyVault/vaults",
+      "apiVersion": "2016-10-01",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "tags": "[variables('tags')]",
+      "properties": {
+        "sku": {
+          "family": "A",
+          "name": "[parameters('sku')]"
+        },
+        "tenantId": "[parameters('tenant')]",
+        "accessPolicies": [
+          {
+            "tenantId": "[parameters('tenant')]",
+            "objectId": "[parameters('objectId')]",
+            "permissions": {
+              "keys": [
+                "get",
+                "list",
+                "update",
+                "create",
+                "import",
+                "delete",
+                "recover",
+                "backup",
+                "restore"
+              ],
+              "secrets": [
+                "get",
+                "list",
+                "set",
+                "delete",
+                "recover",
+                "backup",
+                "restore"
+              ],
+              "certificates": [
+                "get",
+                "list",
+                "update",
+                "create",
+                "import",
+                "delete",
+                "recover",
+                "backup",
+                "restore",
+                "managecontacts",
+                "manageissuers",
+                "getissuers",
+                "listissuers",
+                "setissuers",
+                "deleteissuers"
+              ]
+            }
+          }
+        ],
+        "enabledForDeployment": "[parameters('enabledForDeployment')]",
+        "enabledForDiskEncryption": "[parameters('enabledForDiskEncryption')]",
+        "enabledForTemplateDeployment": "[parameters('enabledForTemplateDeployment')]"
+
+      }
+    }
+  ]
+
+}

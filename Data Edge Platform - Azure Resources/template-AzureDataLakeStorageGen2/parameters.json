@@ -1,0 +1,42 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "australiaeast"
+        },
+        "storageAccountName": {
+            "value": "cmdipadl01dev"
+        },
+        "accountType": {
+            "value": "Standard_RAGRS"
+        },
+        "kind": {
+            "value": "StorageV2"
+        },
+        "accessTier": {
+            "value": "Hot"
+        },
+        "supportsHttpsTrafficOnly": {
+            "value": true
+        },
+        "isHnsEnabled": {
+            "value": true
+        },
+        "env": {
+        "value": "dev"
+        } ,
+        "clientPrefix": {
+        "value": "cm"
+        } ,
+        "resourceType": {     
+        "value": "-adlg2-"
+        },
+        "project": {     
+        "value": "-dip-"
+        }, 
+        "containersName": { 
+        "value": "waste,comdatainsights"
+        }
+    }
+}

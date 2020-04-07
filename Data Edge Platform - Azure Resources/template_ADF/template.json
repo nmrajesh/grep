@@ -1,0 +1,55 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "name": {
+      "type": "string",
+      "metadata": "Data Factory name",
+      "defaultValue": "cm-dip-adf01-dev"
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "australiaeast"
+    },
+    "apiVersion": {
+      "type": "string",
+      "defaultValue": "2018-06-01"
+    },
+    "env": {
+      "type": "string",
+      "defaultValue": "dev"
+    },
+    "clientPrefix": {
+      "type": "string",
+      "defaultValue": "cm"
+    },
+    "resourceType": {
+      "type": "string",
+      "defaultValue": "-adf-"
+    },
+    "project": {
+      "type": "string",
+      "defaultValue": "-dpi-"
+    }
+  },
+    "variables": {
+      "tags": {          
+            "Solution": "Data and Insights Programme"
+          },
+      "factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('name'))]"
+    },
+  "resources": [
+    {
+      "apiVersion": "[parameters('apiVersion')]",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "tags":"[variables('tags')]",
+      "type": "Microsoft.DataFactory/factories",
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "properties": {}
+    }
+  ]
+  
+}
